@@ -1,2 +1,2 @@
 # eslint-config
-personal eslint parser preconfigs
+personal eslint parser pre configs
