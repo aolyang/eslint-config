@@ -8,7 +8,7 @@ export type TypeScriptOverrides = {
 
 export const globTypeScript = "**/*.{ts,mts,tsx,mtsx,cts,ctsx}"
 
-export default async function typescript(overrides: TypeScriptOverrides): Promise<Linter.Config[]> {
+export default async function typescript(overrides: TypeScriptOverrides = {}): Promise<Linter.Config[]> {
     const {
         files = [globTypeScript]
     } = overrides

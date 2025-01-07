@@ -8,7 +8,7 @@ export type AstroOverrides = {
 
 export const globAstro = "**/*.astro"
 
-export default async function astro(overrides: AstroOverrides): Promise<Linter.Config[]> {
+export default async function astro(overrides: AstroOverrides = {}): Promise<Linter.Config[]> {
     const {
         files = [globAstro],
         typescript = true

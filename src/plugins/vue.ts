@@ -26,7 +26,7 @@ export type VueOverrides = {
 
 export const globVue = "**/*.vue"
 
-export default async function vue(overrides: VueOverrides): Promise<Linter.Config[]> {
+export default async function vue(overrides: VueOverrides = {}): Promise<Linter.Config[]> {
     const {
         files = [globVue],
         typescript = true

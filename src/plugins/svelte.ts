@@ -8,7 +8,7 @@ export type SvelteOverrides = {
 
 export const globSvelte = "**/*.svelte"
 
-export default async function svelte(overrides: SvelteOverrides): Promise<Linter.Config[]> {
+export default async function svelte(overrides: SvelteOverrides = {}): Promise<Linter.Config[]> {
     const {
         files = [globSvelte],
         typescript = true
