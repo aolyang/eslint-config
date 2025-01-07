@@ -5,7 +5,16 @@
     "repository": "git@github.com:aolyang/eslint-config.git",
     "author": "aolyang <aolyang@foxmail.com>",
     "license": "MIT",
-    "devDependencies": {
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsup src/index.ts --dts --sourcemap"
+    },
+    "dependencies": {
         "@typescript-eslint/eslint-plugin": "^8.19.0",
         "@typescript-eslint/parser": "^8.19.0",
         "astro-eslint-parser": "^1.1.0",
@@ -16,7 +25,9 @@
         "eslint-plugin-vue": "^9.32.0",
         "eslint-processor-vue-blocks": "^0.1.2",
         "svelte-eslint-parser": "^0.43.0",
-        "tsup": "^8.3.5",
         "vue-eslint-parser": "^9.4.3"
+    },
+    "devDependencies": {
+        "tsup": "^8.3.5"
     }
 }
