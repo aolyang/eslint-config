@@ -1,4 +1,5 @@
 import type { RuleOptions as StylisticRules } from "../types/stylistic"
+import type { Linter } from "eslint"
 
 export type {
     StylisticRules
@@ -13,4 +14,4 @@ export const stylisticRecommended: StylisticRules = {
 }
 
 export const stylisticRules = (rules?: StylisticRules) =>
-    ({ rules: Object.assign({}, stylisticRecommended, rules) })
+    ({ rules: Object.assign({}, stylisticRecommended, rules) }) as Linter.Config
