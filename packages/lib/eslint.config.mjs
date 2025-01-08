@@ -1,9 +1,8 @@
 import globals from "globals"
 
-import { typescript, combine } from "@aolyang/eslint-config"
+import { typescript, combine, ignores } from "@aolyang/eslint-config"
 import { stylistic, stylisticRules } from "@aolyang/eslint-config/stylistic"
 
-/** @type {import("eslint").Linter.Config[] } */
 export default combine(
     {
         languageOptions: {
@@ -12,5 +11,6 @@ export default combine(
     },
     typescript(),
     stylistic(),
-    stylisticRules()
+    stylisticRules(),
+    { ignores }
 )
