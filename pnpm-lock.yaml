@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@aolyang/eslint-config':
         specifier: workspace:*
-        version: link:packages/lib
+        version: link:lib
       '@types/node':
         specifier: ^22.10.5
         version: 22.10.5
@@ -30,7 +30,7 @@ importers:
         specifier: ^4.19.2
         version: 4.19.2
 
-  packages/lib:
+  lib:
     dependencies:
       '@eslint-react/eslint-plugin':
         specifier: ^1.23.2
