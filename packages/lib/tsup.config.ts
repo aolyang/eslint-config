@@ -1,10 +1,13 @@
 import { defineConfig } from "tsup"
 
 export default defineConfig({
+    entry: {
+        index: "src/index.ts",
+        "stylistic/index": "src/stylistic.ts",
+        "react/index": "src/react.ts"
+    },
+    splitting: false,
     shims: true,
-    entry: [
-        "src/index.ts",
-        "src/stylistic.ts",
-        "src/react.ts"
-    ]
+    clean: true,
+    sourcemap: true
 })

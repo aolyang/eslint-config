@@ -1,6 +1,6 @@
 {
     "name": "@aolyang/eslint-config",
-    "version": "0.0.0-beta.2",
+    "version": "0.0.0-beta.3",
     "type": "module",
     "author": "aolyang <aolyang@foxmail.com>",
     "repository": "git@github.com:aolyang/eslint-config.git",
@@ -9,34 +9,16 @@
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "import": {
-                "default": "./dist/index.js",
-                "types": "./dist/index.d.ts"
-            },
-            "require": {
-                "default": "./dist/index.cjs",
-                "types": "./dist/index.d.cts"
-            }
+            "import": { "default": "./dist/index.js", "types": "./dist/index.d.ts" },
+            "require": { "default": "./dist/index.cjs", "types": "./dist/index.d.cts" }
         },
         "./stylistic": {
-            "import": {
-                "default": "./dist/stylistic.js",
-                "types": "./dist/stylistic.d.ts"
-            },
-            "require": {
-                "default": "./dist/stylistic.cjs",
-                "types": "./dist/stylistic.d.cts"
-            }
+            "import": { "default": "./dist/stylistic/index.js", "types": "./dist/stylistic/index.d.ts" },
+            "require": { "default": "./dist/stylistic/index.cjs", "types": "./dist/stylistic/index.d.cts" }
         },
         "./react": {
-            "import": {
-                "default": "./dist/react.js",
-                "types": "./dist/react.d.ts"
-            },
-            "require": {
-                "default": "./dist/react.cjs",
-                "types": "./dist/react.d.cts"
-            }
+            "import": { "default": "./dist/react/index.js", "types": "./dist/react/index.d.ts" },
+            "require": { "default": "./dist/react/index.cjs", "types": "./dist/react/index.d.cts" }
         }
     },
     "scripts": {

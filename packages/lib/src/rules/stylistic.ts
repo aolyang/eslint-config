@@ -13,5 +13,6 @@ export const stylisticRecommended: StylisticRules = {
     "@stylistic/linebreak-style": ["error", "unix"]
 }
 
-export const stylisticRules = (rules?: StylisticRules) =>
-    ({ rules: Object.assign({}, stylisticRecommended, rules) }) as Linter.Config
+export default function stylisticRules (rules?: StylisticRules) {
+    return ({ rules: Object.assign({}, stylisticRecommended, rules) }) as Linter.Config
+}

@@ -8,3 +8,5 @@ export * from "./rules/ignores"
 export * from "./react"
 export * from "./stylistic"
 export * from "./utils"
+
+export default {}

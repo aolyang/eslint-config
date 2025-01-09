@@ -5,9 +5,8 @@ export type {
     ReactRules
 }
 
-export const reactRecommended: ReactRules = {
+export const reactRecommended: ReactRules = {}
 
+export default function reactRules(rules?: ReactRules) {
+    return ({ rules: Object.assign({}, reactRecommended, rules) }) as Linter.Config
 }
-
-export const reactRules = (rules?: ReactRules) =>
-    ({ rules: Object.assign({}, reactRecommended, rules) }) as Linter.Config

@@ -1,7 +1,7 @@
 import globals from "globals"
 
 import { typescript, combine, ignores } from "@aolyang/eslint-config"
-import { stylistic, stylisticRules } from "@aolyang/eslint-config/stylistic"
+import stylistic from "@aolyang/eslint-config/stylistic"
 
 export default combine(
     {
@@ -11,6 +11,5 @@ export default combine(
     },
     typescript(),
     stylistic(),
-    stylisticRules(),
-    { ignores }
+    { ignores: [...ignores, "src/types/*.d.ts"] }
 )
