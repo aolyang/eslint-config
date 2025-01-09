@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "author": "aolyang <aolyang@foxmail.com>",
     "repository": "git@github.com:aolyang/eslint-config.git",
+    "type": "module",
     "scripts": {
         "build": "pnpm --filter @aolyang/eslint-config build",
         "dev": "pnpm build --watch"
@@ -10,10 +11,12 @@
     "devDependencies": {
         "@aolyang/eslint-config": "workspace:*",
         "@types/node": "^22.10.5",
+        "eslint": "^9.17.0",
         "eslint-typegen": "^0.3.2",
         "globals": "^15.14.0",
+        "semver": "^7.6.3",
         "tsup": "^8.3.5",
         "tsx": "^4.19.2",
-        "eslint": "^9.17.0"
+        "zx": "^8.3.0"
     }
 }
