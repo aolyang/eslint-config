@@ -1,6 +1,6 @@
 {
     "name": "@aolyang/eslint-config",
-    "version": "0.0.0-beta.3",
+    "version": "0.0.0-beta.4",
     "type": "module",
     "author": "aolyang <aolyang@foxmail.com>",
     "repository": "git@github.com:aolyang/eslint-config.git",
@@ -9,20 +9,23 @@
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "import": { "default": "./dist/index.js", "types": "./dist/index.d.ts" },
-            "require": { "default": "./dist/index.cjs", "types": "./dist/index.d.cts" }
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs",
+            "types": "./dist/index.d.ts"
         },
         "./stylistic": {
-            "import": { "default": "./dist/stylistic/index.js", "types": "./dist/stylistic/index.d.ts" },
-            "require": { "default": "./dist/stylistic/index.cjs", "types": "./dist/stylistic/index.d.cts" }
+            "import": "./dist/stylistic/index.js",
+            "require": "./dist/stylistic/index.cjs",
+            "types": "./dist/stylistic/index.d.ts"
         },
         "./react": {
-            "import": { "default": "./dist/react/index.js", "types": "./dist/react/index.d.ts" },
-            "require": { "default": "./dist/react/index.cjs", "types": "./dist/react/index.d.cts" }
+            "import": "./dist/react/index.js",
+            "require": "./dist/react/index.cjs",
+            "types": "./dist/react/index.d.ts"
         }
     },
     "scripts": {
-        "build": "tsup --format esm,cjs --dts",
+        "build": "tsup --format esm,cjs && tsup --format esm,cjs --dts-only",
         "dev": "pnpm build --watch",
         "postinstall": "pnpm build"
     },
@@ -45,5 +48,8 @@
     },
     "peerDependencies": {
         "eslint": "^9.17.0"
+    },
+    "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
     }
 }
