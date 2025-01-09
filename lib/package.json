@@ -18,6 +18,11 @@
             "require": "./dist/stylistic/index.cjs",
             "types": "./dist/stylistic/index.d.ts"
         },
+        "./typescript": {
+            "import": "./dist/typescript/index.js",
+            "require": "./dist/typescript/index.cjs",
+            "types": "./dist/typescript/index.d.ts"
+        },
         "./react": {
             "import": "./dist/react/index.js",
             "require": "./dist/react/index.cjs",
