@@ -20,11 +20,25 @@ jobs:
         run: |
           npm install pnpm --global
           pnpm i
-          pnpm build
+          npm pack
 
-#      - name: Run tests
-#        run: pnpm test --all
-#  publish:
-#    if: startsWith(github.event.head_commit.message, 'release')
-#    steps:
-#      - name: ".."
+      - name: Archive lib artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lib-dist
+          path: lib/@aolyang/eslint-config*.tgz
+
+  publish:
+    needs: build
+    steps:
+      - name: Download lib artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: lib
+        run:
+          ls -R
+
+#      - name: Publish to npm
+#        run: |
+#          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+#          pnpm publish --access public
