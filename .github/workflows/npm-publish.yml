@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -24,7 +24,7 @@ jobs:
 
 #      - name: Run tests
 #        run: pnpm test --all
-  publish:
-    if: startsWith(github.event.head_commit.message, 'release')
-    steps:
-      - name: ".."
+#  publish:
+#    if: startsWith(github.event.head_commit.message, 'release')
+#    steps:
+#      - name: ".."
