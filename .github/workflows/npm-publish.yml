@@ -20,7 +20,10 @@ jobs:
         run: |
           npm install pnpm --global
           pnpm i
+          cd lib
           npm pack
+      - name: "Test folder"
+        run: ls -R
 
       - name: Archive lib artifacts
         uses: actions/upload-artifact@v4
@@ -35,7 +38,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: lib-dist
-          path: ./
       - name: Check files
         run: |
           ls -R
