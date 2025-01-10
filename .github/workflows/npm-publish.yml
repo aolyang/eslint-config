@@ -29,13 +29,14 @@ jobs:
           path: lib/@aolyang/eslint-config*.tgz
 
   publish:
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Download lib artifacts
         uses: actions/download-artifact@v4
         with:
           path: lib
-        run:
+        run: |
           ls -R
 
 #      - name: Publish to npm
