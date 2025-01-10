@@ -20,16 +20,12 @@ jobs:
         run: |
           npm install pnpm --global
           pnpm i
-          cd lib
-          npm pack
-      - name: "Test folder"
-        run: ls -R
 
       - name: Archive lib artifacts
         uses: actions/upload-artifact@v4
         with:
           name: lib-dist
-          path: lib/aolyang-eslint-config*.tgz
+          path: lib
   publish:
     needs: build
     runs-on: ubuntu-latest
