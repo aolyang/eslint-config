@@ -36,6 +36,7 @@ jobs:
         with:
           name: lib-dist
           path: ./
+      - name: Check files
         run: |
           ls -R
 
