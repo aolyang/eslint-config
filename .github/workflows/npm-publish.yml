@@ -43,7 +43,7 @@ jobs:
           commit_message=$(git log -1 --pretty=%B)
           if [[ $commit_message =~ --([a-zA-Z0-9_-]+)$ ]]; then
             tag=${BASH_REMATCH[1]}
-            echo "npm_release_tag=$tag" >> $GITHUB_ENV
+            echo 'npm_release_tag=$tag' >> $GITHUB_ENV
           fi
 
       - name: Publish to npm
@@ -51,5 +51,5 @@ jobs:
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
           access: 'public'
-          tag: ${{ npm_release_tag || 'latest' }}
+          tag: ${{ env.npm_release_tag || 'latest' }}
 
