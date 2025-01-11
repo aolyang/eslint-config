@@ -38,7 +38,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: lib-dist
-      - name: Check files
-        run: ls
+      - name: Set release tag
+        run: |
+          commit_message=$(git log -1 --pretty=%B)
+          if [[ $commit_message =~ --([a-zA-Z0-9_-]+)$ ]]; then
+            tag=${BASH_REMATCH[1]}
+            echo "npm_release_tag=$tag" >> $GITHUB_ENV
+          fi
 
+      - name: Publish to npm
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          access: 'public'
+          tag: ${{ npm_release_tag || 'latest' }}
 
