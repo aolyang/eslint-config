@@ -22,12 +22,16 @@ jobs:
           pnpm i
 
       - name: Archive lib artifacts
+        if: startsWith(github.event.head_commit.message, 'release')
         uses: actions/upload-artifact@v4
         with:
           name: lib-dist
-          path: lib
+          path: |
+            lib
+            !lib/node_modules
   publish:
     needs: build
+    if: startsWith(github.event.head_commit.message, 'release')
     runs-on: ubuntu-latest
     steps:
       - name: Download lib artifacts
@@ -35,10 +39,6 @@ jobs:
         with:
           name: lib-dist
       - name: Check files
-        run: |
-          ls -R
+        run: ls
 
-#      - name: Publish to npm
-#        run: |
-#          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-#          pnpm publish --access public
+
