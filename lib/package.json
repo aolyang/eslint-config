@@ -30,7 +30,7 @@
         }
     },
     "scripts": {
-        "build": "tsup --format esm,cjs && tsup --format esm,cjs --dts-only",
+        "build": "tsup --format esm,cjs && tsup --format esm --dts-only",
         "dev": "pnpm build --watch",
         "postinstall": "pnpm build"
     },
