@@ -1,4 +1,4 @@
-import { Linter } from "eslint"
+import type { Linter } from "eslint"
 import { interopDefault } from "../utils"
 
 export type StylisticOverrides = {
@@ -14,8 +14,8 @@ export default async function stylistic(overrides: StylisticOverrides = {}): Pro
 
     return [
         {
-            name: "setup-eslint-plugin/stylistic",
             files,
+            name: "setup-eslint-plugin/stylistic",
             plugins: {
                 "@stylistic": pluginStylistic
             }

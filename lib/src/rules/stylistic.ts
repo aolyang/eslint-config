@@ -1,5 +1,6 @@
 import type { RuleOptions as StylisticRules } from "../types/stylistic"
 import type { Linter } from "eslint"
+import type { PluginConfig } from "../utils"
 
 export type {
     StylisticRules
@@ -13,6 +14,6 @@ export const stylisticRecommended: StylisticRules = {
     "@stylistic/linebreak-style": ["error", "unix"]
 }
 
-export default function stylisticRules (rules?: StylisticRules) {
-    return ({ rules: Object.assign({}, stylisticRecommended, rules) }) as Linter.Config
+export default function stylisticRules ({ rules, files }: PluginConfig<StylisticRules> = {}) {
+    return ({ files, rules: Object.assign({}, stylisticRecommended, rules) }) as Linter.Config
 }

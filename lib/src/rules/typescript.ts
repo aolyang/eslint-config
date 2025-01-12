@@ -1,12 +1,21 @@
 import type { RuleOptions as TypeScriptRules } from "../types/typescript"
 import type { Linter } from "eslint"
+import type { PluginConfig } from "../utils"
 
 export type {
     TypeScriptRules
 }
 
-export const typescriptRecommended: TypeScriptRules = {}
+export const typescriptRecommended: TypeScriptRules = {
+    "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+            prefer: "type-imports",
+            fixStyle: "separate-type-imports"
+        }
+    ]
+}
 
-export default function typescriptRules(rules?: TypeScriptRules) {
-    return ({ rules: Object.assign({}, typescriptRecommended, rules) }) as Linter.Config
+export default function typescriptRules({ rules, files }: PluginConfig<TypeScriptRules> = {}) {
+    return ({ files, rules: Object.assign({}, typescriptRecommended, rules) }) as Linter.Config
 }

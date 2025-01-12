@@ -1,17 +1,19 @@
-import plugin, { TypeScriptOverrides } from "./plugins/typescript"
-import typescriptRules, { TypeScriptRules } from "./rules/typescript"
+import type { TypeScriptOverrides } from "./plugins/typescript"
+import plugin from "./plugins/typescript"
+import type { TypeScriptRules } from "./rules/typescript"
+import typescriptRules from "./rules/typescript"
 import type { Linter } from "eslint"
+import type { PluginConfig } from "./utils"
 import { combine } from "./utils"
 
-interface TypeScriptConfig extends TypeScriptOverrides {
-    rules?: TypeScriptRules
+interface TypeScriptConfig extends TypeScriptOverrides, PluginConfig<TypeScriptRules> {
 }
 
 export default function typescript(config?: TypeScriptConfig): Promise<Linter.Config[]> {
-    const { rules, ...overrides } = config ?? {}
+    const { rules, files, ...overrides } = config ?? {}
     return combine(
-        plugin(overrides),
-        typescriptRules(rules)
+        plugin({ files, ...overrides}),
+        typescriptRules({ rules, files})
     )
 }
 

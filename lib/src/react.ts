@@ -1,6 +1,8 @@
-import plugin, { ReactOverrides } from "./plugins/react"
-import reactRules, { ReactRules } from "./rules/react"
-import { Linter } from "eslint"
+import type { ReactOverrides } from "./plugins/react"
+import plugin from "./plugins/react"
+import type { ReactRules } from "./rules/react"
+import reactRules from "./rules/react"
+import type { Linter } from "eslint"
 import { combine } from "./utils"
 
 interface ReactConfig extends ReactOverrides {
@@ -8,12 +10,12 @@ interface ReactConfig extends ReactOverrides {
 }
 
 export default function react(config?: ReactConfig): Promise<Linter.Config[]> {
-    const { rules, ...overrides } = config ?? {}
+    const { rules, files, ...overrides } = config ?? {}
     return combine(
-        plugin(overrides),
-        reactRules(rules)
+        plugin({ files, ...overrides}),
+        reactRules({ rules, files })
     )
 }
 
 export type { ReactConfig, ReactOverrides, ReactRules }
-export { plugin as react, reactRules } 
+export { plugin as react, reactRules }

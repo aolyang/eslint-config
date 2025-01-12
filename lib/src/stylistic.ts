@@ -1,18 +1,19 @@
-import { StylisticOverrides } from "./plugins/stylistic"
-import { Linter } from "eslint"
+import type { StylisticOverrides } from "./plugins/stylistic"
+import type { Linter } from "eslint"
+import type { PluginConfig } from "./utils"
 import { combine } from "./utils"
 import plugin from "./plugins/stylistic"
-import stylisticRules, { StylisticRules } from "./rules/stylistic"
+import type { StylisticRules } from "./rules/stylistic"
+import stylisticRules from "./rules/stylistic"
 
-interface StylisticConfig extends StylisticOverrides {
-    rules?: StylisticRules
+interface StylisticConfig extends StylisticOverrides, PluginConfig<StylisticRules> {
 }
 
 export default function stylistic(config?: StylisticConfig): Promise<Linter.Config[]> {
-    const { rules, ...overrides } = config ?? {}
+    const { rules, files, ...overrides } = config ?? {}
     return combine(
-        plugin(overrides),
-        stylisticRules(rules)
+        plugin({ files, ...overrides }),
+        stylisticRules({ files, rules })
     )
 }
 
