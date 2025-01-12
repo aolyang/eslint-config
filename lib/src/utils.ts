@@ -11,8 +11,9 @@ export async function interopDefault<T>(module: Awaitable<T>): Promise<T extends
     return Promise.resolve(module).then(m => (m as any).default ?? m)
 }
 
+type AwaitableConfigs = Awaitable<Linter.Config | Linter.Config[]>[]
 
-export async function combine(...args: Awaitable<Linter.Config | Linter.Config[]>[]): Promise<Linter.Config[]> {
+export async function combine(...args: AwaitableConfigs): Promise<Linter.Config[]> {
     const configs = await Promise.all(args)
     return configs.flat()
 }
@@ -25,3 +26,15 @@ export function combineGlobals(...args: Linter.Globals[]): Linter.Config {
     }
 }
 
+export interface SharedConfig {
+    files: string[]
+}
+
+export function combineConfig(config: Partial<SharedConfig>) {
+    return async (...args: AwaitableConfigs): Promise<Linter.Config[]> => {
+        return combine(...args).then(configs => configs.map((_config) => ({
+            files: config.files ?? _config.files,
+            ..._config
+        })))
+    }
+}
