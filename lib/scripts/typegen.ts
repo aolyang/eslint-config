@@ -1,9 +1,14 @@
+import type { Awaitable} from "../src"
+import type { Linter } from "eslint"
+
 import fs from "node:fs/promises"
 import path from "node:path"
-import { fileURLToPath } from "url"
+
 import { flatConfigsToRulesDTS } from "eslint-typegen/core"
-import { Awaitable, typescript, react, vue, svelte, astro, stylistic } from "../src"
-import { Linter } from "eslint"
+import { fileURLToPath } from "url"
+
+import { astro, react, stylistic,svelte, typescript, vue } from "../src"
+import importExport from "../src/plugins/import-export"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -19,3 +24,4 @@ dts(svelte(), "svelte")
 dts(vue(), "vue")
 dts(astro(), "astro")
 dts(stylistic(), "stylistic")
+dts(importExport(), "import-export")

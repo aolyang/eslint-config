@@ -1,4 +1,5 @@
 import type { Linter } from "eslint"
+
 import { interopDefault } from "../utils"
 
 export type ImportExportOverrides = {
@@ -20,6 +21,7 @@ export default async function importExport(overrides: ImportExportOverrides = {}
 
     return  [
         {
+            files,
             name: "setup-eslint-plugin/import-export",
             plugins: {
                 "simple-import-sort": pluginImportSort

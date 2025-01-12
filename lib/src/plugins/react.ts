@@ -1,5 +1,6 @@
+import type { Linter } from "eslint"
+
 import { interopDefault } from "../utils"
-import { Linter } from "eslint"
 
 export type ReactOverrides = {
     files?: string[]
@@ -26,6 +27,7 @@ export default async function react(overrides: ReactOverrides = {}): Promise<Lin
     const plugins = pluginReact.configs.all.plugins
     return [
         {
+            files,
             name: "setup-eslint-plugin/react",
             plugins: {
                 "react": plugins["@eslint-react"],

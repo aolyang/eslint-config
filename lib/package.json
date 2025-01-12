@@ -13,11 +13,6 @@
             "require": "./dist/index.cjs",
             "types": "./dist/index.d.ts"
         },
-        "./stylistic": {
-            "import": "./dist/stylistic/index.js",
-            "require": "./dist/stylistic/index.cjs",
-            "types": "./dist/stylistic/index.d.ts"
-        },
         "./typescript": {
             "import": "./dist/typescript/index.js",
             "require": "./dist/typescript/index.cjs",
@@ -27,6 +22,16 @@
             "import": "./dist/react/index.js",
             "require": "./dist/react/index.cjs",
             "types": "./dist/react/index.d.ts"
+        },
+        "./stylistic": {
+            "import": "./dist/stylistic/index.js",
+            "require": "./dist/stylistic/index.cjs",
+            "types": "./dist/stylistic/index.d.ts"
+        },
+        "./import-export": {
+            "import": "./dist/import-export/index.js",
+            "require": "./dist/import-export/index.cjs",
+            "types": "./dist/import-export/index.d.ts"
         }
     },
     "scripts": {

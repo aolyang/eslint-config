@@ -24,6 +24,7 @@ export default async function typescript(overrides: TypeScriptOverrides = {}): P
 
     return [
         {
+            files,
             name: "setup-eslint-plugin/typescript",
             plugins: {
                 "@typescript-eslint": pluginTypeScript as any

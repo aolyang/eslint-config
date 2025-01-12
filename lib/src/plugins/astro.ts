@@ -1,4 +1,5 @@
 import type { Linter } from "eslint"
+
 import { interopDefault } from "../utils"
 
 export type AstroOverrides = {
@@ -22,6 +23,7 @@ export default async function astro(overrides: AstroOverrides = {}): Promise<Lin
     ] as const)
     return [
         {
+            files,
             name: "setup-eslint-plugin/astro",
             plugins: {
                 astro: pluginAstro

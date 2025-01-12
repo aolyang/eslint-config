@@ -1,4 +1,5 @@
-import { Linter } from "eslint"
+import type { Linter } from "eslint"
+
 import { interopDefault } from "../utils"
 
 export type SvelteOverrides = {
@@ -22,6 +23,7 @@ export default async function svelte(overrides: SvelteOverrides = {}): Promise<L
     ] as const)
     return [
         {
+            files,
             name: "setup-eslint-plugin/svelte",
             plugins: {
                 svelte: pluginSvelte as any

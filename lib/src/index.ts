@@ -5,8 +5,9 @@ export { default as astro } from "./plugins/astro"
 export * from "./rules/ignores"
 
 export * from "./react"
-export * from "./stylistic"
 export * from "./typescript"
+export * from "./stylistic"
+export * from "./import-export"
 export * from "./utils"
 
 export default {}

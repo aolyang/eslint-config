@@ -41,6 +41,7 @@ export default async function vue(overrides: VueOverrides = {}): Promise<Linter.
 
     return [
         {
+            files,
             name: "setup-eslint-plugin/vue",
             languageOptions: {
                 globals: globalsVue
