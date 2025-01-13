@@ -13,7 +13,17 @@ export const stylisticRecommended: StylisticRules = {
     "@stylistic/quotes": ["error", "double"],
     "@stylistic/semi": ["error", "never"],
     "@stylistic/comma-dangle": ["error", "never"],
-    "@stylistic/linebreak-style": ["error", "unix"]
+    "@stylistic/linebreak-style": ["error", "unix"],
+    "@stylistic/no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
+    "@stylistic/eol-last": ["error", "always"],
+    "@stylistic/no-trailing-spaces": ["error"],
+    "@stylistic/no-multi-spaces": ["error", {
+        exceptions: {
+            Property: true,
+            VariableDeclarator: true,
+            ImportDeclaration: true
+        }
+    }]
 }
 
 export default function stylisticRules({ rules, files = [globStylistic] }: PluginConfig<StylisticRules> = {}) {
