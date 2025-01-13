@@ -1,0 +1,10 @@
+{
+    "name": "test-react",
+    "type": "module",
+    "dependencies": {
+        "@aolyang/eslint-config": "workspace:*",
+        "@types/react": "^19.0.6",
+        "eslint": "^9.17.0",
+        "react": "^19.0.0"
+    }
+}

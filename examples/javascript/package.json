@@ -1,0 +1,8 @@
+{
+    "name": "test-typescript",
+    "type": "module",
+    "dependencies": {
+        "eslint": "^9.17.0",
+        "@aolyang/eslint-config": "workspace:*"
+    }
+}
