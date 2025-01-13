@@ -32,9 +32,12 @@ export interface SharedConfig {
 
 export function combineConfig(config: Partial<SharedConfig>) {
     return async (...args: AwaitableConfigs): Promise<Linter.Config[]> => {
-        return combine(...args).then(configs => configs.map((_config) => ({
-            files: config.files ?? _config.files,
-            ..._config
-        })))
+        return combine(...args).then(configs => configs.map((_config) => _config.ignores
+            ? _config
+            : ({
+                files: config.files ?? _config.files,
+                ..._config
+            })
+        ))
     }
 }
