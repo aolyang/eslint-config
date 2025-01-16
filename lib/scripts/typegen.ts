@@ -1,5 +1,5 @@
-import type { Awaitable} from "../src"
 import type { Linter } from "eslint"
+import type { Awaitable} from "../src"
 
 import fs from "node:fs/promises"
 import path from "node:path"
@@ -16,7 +16,6 @@ const dts = (configs: Awaitable<Linter.Config[]>, save: string) =>
     Promise.resolve(configs)
         .then(configs => flatConfigsToRulesDTS(configs))
         .then(dts => fs.writeFile(path.resolve(__dirname, `../src/types/${save}.d.ts`), dts))
-
 
 dts(react(), "react")
 dts(typescript(), "typescript")

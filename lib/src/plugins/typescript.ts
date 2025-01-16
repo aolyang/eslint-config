@@ -21,7 +21,6 @@ export default async function typescript(overrides: TypeScriptOverrides = {}): P
         interopDefault(import("@typescript-eslint/parser"))
     ] as const)
 
-
     return [
         {
             files,

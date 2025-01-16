@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { RuleOptions as ReactRules } from "../types/react"
 import type { PluginConfig } from "../utils"
-import type { Linter } from "eslint"
 
 import { globReact } from "../plugins/react"
 

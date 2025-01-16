@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { RuleOptions as SvelteRules } from "../types/svelte"
 import type { PluginConfig } from "../utils"
-import type { Linter } from "eslint"
 
 import { globSvelte } from "../plugins/svelte"
 

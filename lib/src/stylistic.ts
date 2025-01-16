@@ -1,7 +1,7 @@
+import type { Linter } from "eslint"
 import type { StylisticOverrides } from "./plugins/stylistic"
 import type { StylisticRules } from "./rules/stylistic"
 import type { PluginConfig } from "./utils"
-import type { Linter } from "eslint"
 
 import plugin from "./plugins/stylistic"
 import stylisticRules from "./rules/stylistic"
@@ -16,7 +16,6 @@ export default function stylistic(config?: StylisticConfig): Promise<Linter.Conf
         stylisticRules(config)
     )
 }
-
 
 export { plugin as stylistic, stylisticRules }
 export type { StylisticConfig, StylisticRules, StylisticOverrides }

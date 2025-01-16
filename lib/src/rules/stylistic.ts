@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { RuleOptions as StylisticRules } from "../types/stylistic"
 import type { PluginConfig } from "../utils"
-import type { Linter } from "eslint"
 
 import { globStylistic } from "../plugins/stylistic"
 

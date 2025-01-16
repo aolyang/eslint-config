@@ -6,7 +6,9 @@ export default defineConfig({
         "react/index": "src/react.ts",
         "typescript/index": "src/typescript.ts",
         "stylistic/index": "src/stylistic.ts",
-        "import-export/index": "src/import-export.ts"
+        "import-export/index": "src/import-export.ts",
+        "svelte/index": "src/svelte.ts",
+        "vue/index": "src/vue.ts"
     },
     splitting: false,
     shims: true,

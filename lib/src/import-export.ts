@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { ImportExportOverrides } from "./plugins/import-export"
 import type { ImportExportRules } from "./rules/import-export"
-import type { Linter } from "eslint"
 
 import plugin from "./plugins/import-export"
 import importExportRules from "./rules/import-export"

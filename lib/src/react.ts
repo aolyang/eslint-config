@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { ReactOverrides } from "./plugins/react"
 import type { ReactRules } from "./rules/react"
-import type { Linter } from "eslint"
 
 import plugin from "./plugins/react"
 import reactRules from "./rules/react"

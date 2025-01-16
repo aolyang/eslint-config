@@ -1,7 +1,7 @@
+import type { Linter } from "eslint"
 import type { TypeScriptOverrides } from "./plugins/typescript"
 import type { TypeScriptRules } from "./rules/typescript"
 import type { PluginConfig } from "./utils"
-import type { Linter } from "eslint"
 
 import plugin from "./plugins/typescript"
 import typescriptRules from "./rules/typescript"

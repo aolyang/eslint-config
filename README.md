@@ -45,6 +45,7 @@ export default combine(
 
 ```js
 import { combine, typescript, typescriptRules } from "@aolyang/eslint-config"
+// import { typescript, typescriptRules } from "@aolyang/eslint-config/typescript"
 
 export default combine(
     // this provide parser config only
@@ -53,23 +54,27 @@ export default combine(
     }),
     // ...merged my opinionated rules behind
     typescriptRules({
-        "@typescript-eslint/no-unused-vars": "off"
+        files: ["*.ts", "*.tsx"],
+        rules: {
+            "@typescript-eslint/no-unused-vars": "off"
+        }
     })
 )
 ```
 
 ```js
-import { combine } from "@aolyang/eslint-config"
+import { combineConfig } from "@aolyang/eslint-config"
 import { typescript, typescriptRules } from "@aolyang/eslint-config/typescript"
 
-export default combine(
-    // this provide parser config only
-    typescript({
-        files: ["*.ts", "*.tsx"]
-    }),
+export default combineConfig({
+   files: ["*.ts", "*.tsx"]
+})(
+    typescript(), // +++ add files
     // ...merged my opinionated rules behind
-    typescriptRules({
-        "@typescript-eslint/no-unused-vars": "off"
+    typescriptRules({ // +++ add files
+        rules: {
+            "@typescript-eslint/no-unused-vars": "off"
+        }
     })
 )
 ```

@@ -1,6 +1,6 @@
 {
     "name": "@aolyang/eslint-config",
-    "version": "0.0.0-beta.12",
+    "version": "0.0.0-beta.13",
     "type": "module",
     "author": "aolyang <aolyang@foxmail.com>",
     "repository": "git@github.com:aolyang/eslint-config.git",
@@ -22,6 +22,16 @@
             "import": "./dist/react/index.js",
             "require": "./dist/react/index.cjs",
             "types": "./dist/react/index.d.ts"
+        },
+        "./vue": {
+            "import": "./dist/vue/index.js",
+            "require": "./dist/vue/index.cjs",
+            "types": "./dist/vue/index.d.ts"
+        },
+        "./svelte": {
+            "import": "./dist/svelte/index.js",
+            "require": "./dist/svelte/index.cjs",
+            "types": "./dist/svelte/index.d.ts"
         },
         "./stylistic": {
             "import": "./dist/stylistic/index.js",

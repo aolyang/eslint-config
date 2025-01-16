@@ -19,7 +19,7 @@ export default async function importExport(overrides: ImportExportOverrides = {}
         interopDefault(import("eslint-plugin-simple-import-sort"))
     ] as const)
 
-    return  [
+    return [
         {
             files,
             name: "setup-eslint-plugin/import-export",

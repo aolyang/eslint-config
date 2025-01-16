@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { RuleOptions as TypeScriptRules } from "../types/typescript"
 import type { PluginConfig } from "../utils"
-import type { Linter } from "eslint"
 
 import { globTypeScript } from "../plugins/typescript"
 

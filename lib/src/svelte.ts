@@ -1,6 +1,6 @@
+import type { Linter } from "eslint"
 import type { SvelteOverrides } from "./plugins/svelte"
 import type { SvelteRules } from "./rules/svelte"
-import type { Linter } from "eslint"
 
 import plugin from "./plugins/svelte"
 import svelteRules from "./rules/svelte"
