@@ -23,7 +23,8 @@ export const stylisticRecommended: StylisticRules = {
             VariableDeclarator: true,
             ImportDeclaration: true
         }
-    }]
+    }],
+    "@stylistic/member-delimiter-style": ["error", { multiline: { delimiter: "none", requireLast: false } }]
 }
 
 export default function stylisticRules({ rules, files = [globStylistic] }: PluginConfig<StylisticRules> = {}) {
