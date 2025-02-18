@@ -16,7 +16,7 @@ export const importExportRecommended: ImportExportRules = {
                 // Side effect imports.
                 ["^\\u0000"],
                 // type import
-                ["^@?\\w.*\\u0000$", "^\\..*\\u0000$"],
+                ["^@?\\w.*\\u0000$", "^[@~#].*\\u0000$", "^\\..*\\u0000$"],
                 // Node.js builtins prefixed with `node:`.
                 ["^node:"],
                 // Packages.
@@ -27,7 +27,7 @@ export const importExportRecommended: ImportExportRules = {
                 ["^"],
                 // Relative imports.
                 // Anything that starts with a dot.
-                ["^\\.\S+(?<!\\u0000$)"]
+                ["^\\.\\S+(?<!\\u0000$)"]
             ]
         }
     ]
