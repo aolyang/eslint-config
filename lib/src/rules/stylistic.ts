@@ -9,7 +9,14 @@ export type {
 }
 
 export const stylisticRecommended: StylisticRules = {
-    "@stylistic/indent": ["error", 4],
+    "@stylistic/indent": ["error", 4, { ignoredNodes: ["JSXAttribute"] }],
+    /* align jsx props:
+    <div className="h-8 bg-[rgba(227,227,227,1)]"
+         style={{ WebkitAppRegion: "drag", color: "red" }}>
+    </div>
+    */
+    "@stylistic/jsx-indent-props": ["error", "first"],
+
     "@stylistic/quotes": ["error", "double"],
     "@stylistic/semi": ["error", "never"],
     "@stylistic/comma-dangle": ["error", "never"],

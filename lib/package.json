@@ -1,6 +1,6 @@
 {
     "name": "@aolyang/eslint-config",
-    "version": "0.0.0-beta.18",
+    "version": "0.0.0-beta.19",
     "type": "module",
     "author": "aolyang <aolyang@foxmail.com>",
     "repository": "git@github.com:aolyang/eslint-config.git",
