@@ -181,7 +181,7 @@ export interface RuleOptions {
    */
   'vue/html-closing-bracket-spacing'?: Linter.RuleEntry<VueHtmlClosingBracketSpacing>
   /**
-   * enforce unified line brake in HTML comments
+   * enforce unified line break in HTML comments
    * @see https://eslint.vuejs.org/rules/html-comment-content-newline.html
    */
   'vue/html-comment-content-newline'?: Linter.RuleEntry<VueHtmlCommentContentNewline>
@@ -221,7 +221,7 @@ export interface RuleOptions {
    */
   'vue/jsx-uses-vars'?: Linter.RuleEntry<[]>
   /**
-   * Enforce consistent spacing between property names and type annotations in types and interfaces in `<template>`
+   * Enforce consistent spacing between keys and values in object literal properties in `<template>`
    * @see https://eslint.vuejs.org/rules/key-spacing.html
    */
   'vue/key-spacing'?: Linter.RuleEntry<VueKeySpacing>
@@ -491,6 +491,11 @@ export interface RuleOptions {
    */
   'vue/no-extra-parens'?: Linter.RuleEntry<VueNoExtraParens>
   /**
+   * Disallow shorthand type conversions in `<template>`
+   * @see https://eslint.vuejs.org/rules/no-implicit-coercion.html
+   */
+  'vue/no-implicit-coercion'?: Linter.RuleEntry<VueNoImplicitCoercion>
+  /**
    * require valid keys in model option
    * @see https://eslint.vuejs.org/rules/no-invalid-model-keys.html
    * @deprecated
@@ -522,12 +527,12 @@ export interface RuleOptions {
    */
   'vue/no-multi-spaces'?: Linter.RuleEntry<VueNoMultiSpaces>
   /**
-   * disallow to pass multiple objects into array to class
+   * disallow passing multiple objects in an array to class
    * @see https://eslint.vuejs.org/rules/no-multiple-objects-in-class.html
    */
   'vue/no-multiple-objects-in-class'?: Linter.RuleEntry<[]>
   /**
-   * disallow to pass multiple arguments to scoped slots
+   * disallow passing multiple arguments to scoped slots
    * @see https://eslint.vuejs.org/rules/no-multiple-slot-args.html
    */
   'vue/no-multiple-slot-args'?: Linter.RuleEntry<[]>
@@ -914,7 +919,7 @@ export interface RuleOptions {
    */
   'vue/prop-name-casing'?: Linter.RuleEntry<VuePropNameCasing>
   /**
-   * Require quotes around object literal, type literal, interfaces and enums property names in `<template>`
+   * Require quotes around object literal property names in `<template>`
    * @see https://eslint.vuejs.org/rules/quote-props.html
    */
   'vue/quote-props'?: Linter.RuleEntry<VueQuoteProps>
@@ -1275,7 +1280,6 @@ type VueArrayElementNewline = []|[(_VueArrayElementNewlineBasicConfig | {
   ArrayPattern?: _VueArrayElementNewlineBasicConfig
 })]
 type _VueArrayElementNewlineBasicConfig = (("always" | "never" | "consistent") | {
-  consistent?: boolean
   multiline?: boolean
   minItems?: (number | null)
 })
@@ -1344,14 +1348,9 @@ type VueCommaDangle = []|[(_VueCommaDangleValue | {
   imports?: _VueCommaDangleValueWithIgnore
   exports?: _VueCommaDangleValueWithIgnore
   functions?: _VueCommaDangleValueWithIgnore
-  importAttributes?: _VueCommaDangleValueWithIgnore
-  dynamicImports?: _VueCommaDangleValueWithIgnore
-  enums?: _VueCommaDangleValueWithIgnore
-  generics?: _VueCommaDangleValueWithIgnore
-  tuples?: _VueCommaDangleValueWithIgnore
 })]
 type _VueCommaDangleValue = ("always-multiline" | "always" | "never" | "only-multiline")
-type _VueCommaDangleValueWithIgnore = ("always-multiline" | "always" | "never" | "only-multiline" | "ignore")
+type _VueCommaDangleValueWithIgnore = ("always-multiline" | "always" | "ignore" | "never" | "only-multiline")
 // ----- vue/comma-spacing -----
 type VueCommaSpacing = []|[{
   before?: boolean
@@ -1422,10 +1421,6 @@ type VueFirstAttributeLinebreak = []|[{
 // ----- vue/func-call-spacing -----
 type VueFuncCallSpacing = ([]|["never"] | []|["always"]|["always", {
   allowNewlines?: boolean
-  optionalChain?: {
-    before?: boolean
-    after?: boolean
-  }
 }])
 // ----- vue/html-button-has-type -----
 type VueHtmlButtonHasType = []|[{
@@ -1743,10 +1738,6 @@ type VueKeywordSpacing = []|[{
       before?: boolean
       after?: boolean
     }
-    satisfies?: {
-      before?: boolean
-      after?: boolean
-    }
     set?: {
       before?: boolean
       after?: boolean
@@ -1820,10 +1811,6 @@ type VueKeywordSpacing = []|[{
       after?: boolean
     }
     yield?: {
-      before?: boolean
-      after?: boolean
-    }
-    type?: {
       before?: boolean
       after?: boolean
     }
@@ -1955,10 +1942,7 @@ type VueMultilineHtmlElementContentNewline = []|[{
   allowEmptyLines?: boolean
 }]
 // ----- vue/multiline-ternary -----
-type VueMultilineTernary = []|[("always" | "always-multiline" | "never")]|[("always" | "always-multiline" | "never"), {
-  ignoreJSX?: boolean
-  [k: string]: unknown | undefined
-}]
+type VueMultilineTernary = []|[("always" | "always-multiline" | "never")]
 // ----- vue/mustache-interpolation-spacing -----
 type VueMustacheInterpolationSpacing = []|[("always" | "never")]
 // ----- vue/new-line-between-multi-line-property -----
@@ -2034,6 +2018,14 @@ type VueNoExtraParens = ([]|["functions"] | []|["all"]|["all", {
   enforceForFunctionPrototypeMethods?: boolean
   allowParensAfterCommentPattern?: string
 }])
+// ----- vue/no-implicit-coercion -----
+type VueNoImplicitCoercion = []|[{
+  boolean?: boolean
+  number?: boolean
+  string?: boolean
+  disallowTemplateShorthand?: boolean
+  allow?: ("~" | "!!" | "+" | "- -" | "-" | "*")[]
+}]
 // ----- vue/no-irregular-whitespace -----
 type VueNoIrregularWhitespace = []|[{
   skipComments?: boolean
@@ -2275,16 +2267,6 @@ type VueObjectCurlyNewline = []|[((("always" | "never") | {
     minProperties?: number
     consistent?: boolean
   })
-  TSTypeLiteral?: (("always" | "never") | {
-    multiline?: boolean
-    minProperties?: number
-    consistent?: boolean
-  })
-  TSInterfaceBody?: (("always" | "never") | {
-    multiline?: boolean
-    minProperties?: number
-    consistent?: boolean
-  })
 })]
 // ----- vue/object-curly-spacing -----
 type VueObjectCurlySpacing = []|[("always" | "never")]|[("always" | "never"), {
@@ -2306,7 +2288,7 @@ type VueObjectShorthand = ([]|[("always" | "methods" | "properties" | "never" | 
   avoidExplicitReturnArrows?: boolean
 }])
 // ----- vue/operator-linebreak -----
-type VueOperatorLinebreak = []|[(("after" | "before" | "none") | null)]|[(("after" | "before" | "none") | null), {
+type VueOperatorLinebreak = []|[("after" | "before" | "none" | null)]|[("after" | "before" | "none" | null), {
   overrides?: {
     [k: string]: ("after" | "before" | "none" | "ignore") | undefined
   }
@@ -2337,7 +2319,9 @@ type VuePaddingLinesInComponentDefinition = []|[(("always" | "never") | {
 // ----- vue/prefer-true-attribute-shorthand -----
 type VuePreferTrueAttributeShorthand = []|[("always" | "never")]
 // ----- vue/prop-name-casing -----
-type VuePropNameCasing = []|[("camelCase" | "snake_case")]
+type VuePropNameCasing = []|[("camelCase" | "snake_case")]|[("camelCase" | "snake_case"), {
+  ignoreProps?: string[]
+}]
 // ----- vue/quote-props -----
 type VueQuoteProps = ([]|[("always" | "as-needed" | "consistent" | "consistent-as-needed")] | []|[("always" | "as-needed" | "consistent" | "consistent-as-needed")]|[("always" | "as-needed" | "consistent" | "consistent-as-needed"), {
   keywords?: boolean
